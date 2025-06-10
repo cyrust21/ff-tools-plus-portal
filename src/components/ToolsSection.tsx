@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -16,6 +15,7 @@ import {
   Sword,
   Headphones
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const tools = [
   {
@@ -25,7 +25,8 @@ const tools = [
     icon: Settings,
     category: "Settings",
     popular: true,
-    features: ["All devices", "DPI converter", "Export settings"]
+    features: ["All devices", "DPI converter", "Export settings"],
+    route: "/sensitivity-calculator"
   },
   {
     id: 2,
@@ -34,7 +35,8 @@ const tools = [
     icon: Target,
     category: "Training",
     popular: true,
-    features: ["Practice mode", "Score tracking", "Different targets"]
+    features: ["Practice mode", "Score tracking", "Different targets"],
+    route: null
   },
   {
     id: 3,
@@ -43,7 +45,8 @@ const tools = [
     icon: Trophy,
     category: "Ranking",
     popular: false,
-    features: ["All ranks", "RP calculator", "Season tracker"]
+    features: ["All ranks", "RP calculator", "Season tracker"],
+    route: "/rank-calculator"
   },
   {
     id: 4,
@@ -52,7 +55,8 @@ const tools = [
     icon: Crosshair,
     category: "Visual",
     popular: false,
-    features: ["Custom colors", "Size adjuster", "Preview mode"]
+    features: ["Custom colors", "Size adjuster", "Preview mode"],
+    route: null
   },
   {
     id: 5,
@@ -61,7 +65,8 @@ const tools = [
     icon: Users,
     category: "Team",
     popular: true,
-    features: ["Team stats", "Role optimizer", "Strategy tips"]
+    features: ["Team stats", "Role optimizer", "Strategy tips"],
+    route: null
   },
   {
     id: 6,
@@ -70,7 +75,8 @@ const tools = [
     icon: Sword,
     category: "Database",
     popular: false,
-    features: ["All weapons", "Damage chart", "Compare tools"]
+    features: ["All weapons", "Damage chart", "Compare tools"],
+    route: null
   },
   {
     id: 7,
@@ -79,7 +85,8 @@ const tools = [
     icon: Headphones,
     category: "Audio",
     popular: false,
-    features: ["EQ presets", "Direction audio", "Footstep enhance"]
+    features: ["EQ presets", "Direction audio", "Footstep enhance"],
+    route: null
   },
   {
     id: 8,
@@ -88,14 +95,21 @@ const tools = [
     icon: TrendingUp,
     category: "Performance",
     popular: true,
-    features: ["Real-time stats", "Optimization tips", "Device compare"]
+    features: ["Real-time stats", "Optimization tips", "Device compare"],
+    route: null
   }
 ];
 
 const ToolsSection = () => {
-  const handleToolLaunch = (toolName: string) => {
-    console.log(`Launching ${toolName}...`);
-    alert(`${toolName} akan segera tersedia!`);
+  const navigate = useNavigate();
+
+  const handleToolLaunch = (tool: typeof tools[0]) => {
+    console.log(`Launching ${tool.title}...`);
+    if (tool.route) {
+      navigate(tool.route);
+    } else {
+      alert(`${tool.title} akan segera tersedia!`);
+    }
   };
 
   const handleViewAllTools = () => {
@@ -161,7 +175,7 @@ const ToolsSection = () => {
                     <Button 
                       className="w-full group-hover:ff-gradient group-hover:text-black transition-all duration-300"
                       variant="outline"
-                      onClick={() => handleToolLaunch(tool.title)}
+                      onClick={() => handleToolLaunch(tool)}
                     >
                       <Zap className="w-4 h-4 mr-2" />
                       Launch Tool
