@@ -338,22 +338,22 @@ const RankCalculator = () => {
                     Export Data
                   </Button>
                   <Button 
-                    onClick={clearAllData} 
-                    variant="destructive" 
-                    className="w-full"
-                    onClick={() => {
-                      if (confirm('Are you sure you want to clear all data?')) {
-                        clearAllData();
-                        toast({
-                          title: "Data Cleared",
-                          description: "All historical data has been cleared",
-                        });
-                      }
-                    }}
-                  >
-                    <Trash2 className="w-4 h-4 mr-2" />
-                    Clear All Data
-                  </Button>
+  variant="destructive" 
+  className="w-full"
+  onClick={() => {
+    if (confirm('Are you sure you want to clear all data?')) {
+      clearAllData();
+      toast({
+        title: "Data Cleared",
+        description: "All historical data has been cleared",
+      });
+    }
+  }}
+>
+  <Trash2 className="w-4 h-4 mr-2" />
+  Clear All Data
+</Button>
+
                 </CardContent>
               </Card>
             </div>
