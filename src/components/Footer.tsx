@@ -6,7 +6,7 @@ import {
   Youtube, 
   Instagram, 
   Twitter, 
-  Discord,
+  MessageCircle,
   Mail,
   Heart
 } from "lucide-react";
@@ -40,7 +40,7 @@ const Footer = () => {
                 <Twitter className="w-4 h-4" />
               </Button>
               <Button size="icon" variant="outline" className="hover:text-primary">
-                <Discord className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4" />
               </Button>
             </div>
           </div>
