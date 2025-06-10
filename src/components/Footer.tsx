@@ -12,6 +12,34 @@ import {
 } from "lucide-react";
 
 const Footer = () => {
+  const handleSocialClick = (platform: string) => {
+    const urls = {
+      youtube: "https://youtube.com/@fftoolspro",
+      instagram: "https://instagram.com/fftoolspro",
+      twitter: "https://twitter.com/fftoolspro",
+      discord: "https://discord.gg/fftoolspro"
+    };
+    
+    const url = urls[platform as keyof typeof urls];
+    if (url) {
+      window.open(url, '_blank');
+    }
+  };
+
+  const handleEmailClick = () => {
+    window.location.href = "mailto:support@fftoolspro.com";
+  };
+
+  const handlePremiumClick = () => {
+    // Scroll to tools section or show premium modal
+    document.getElementById('tools')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleToolClick = (toolName: string) => {
+    console.log(`Opening ${toolName} tool`);
+    // Here you can add navigation to specific tool pages
+  };
+
   return (
     <footer className="bg-secondary/50 backdrop-blur border-t border-border/50">
       <div className="container py-16">
@@ -30,16 +58,36 @@ const Footer = () => {
               Platform tools gaming terlengkap untuk Free Fire. Tingkatkan skill dan raih victory royale!
             </p>
             <div className="flex space-x-3">
-              <Button size="icon" variant="outline" className="hover:text-primary">
+              <Button 
+                size="icon" 
+                variant="outline" 
+                className="hover:text-primary"
+                onClick={() => handleSocialClick('youtube')}
+              >
                 <Youtube className="w-4 h-4" />
               </Button>
-              <Button size="icon" variant="outline" className="hover:text-primary">
+              <Button 
+                size="icon" 
+                variant="outline" 
+                className="hover:text-primary"
+                onClick={() => handleSocialClick('instagram')}
+              >
                 <Instagram className="w-4 h-4" />
               </Button>
-              <Button size="icon" variant="outline" className="hover:text-primary">
+              <Button 
+                size="icon" 
+                variant="outline" 
+                className="hover:text-primary"
+                onClick={() => handleSocialClick('twitter')}
+              >
                 <Twitter className="w-4 h-4" />
               </Button>
-              <Button size="icon" variant="outline" className="hover:text-primary">
+              <Button 
+                size="icon" 
+                variant="outline" 
+                className="hover:text-primary"
+                onClick={() => handleSocialClick('discord')}
+              >
                 <MessageCircle className="w-4 h-4" />
               </Button>
             </div>
@@ -49,21 +97,36 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Tools</h3>
             <div className="space-y-2 text-sm">
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">
+              <button 
+                onClick={() => handleToolClick('Sensitivity Calculator')}
+                className="block text-muted-foreground hover:text-primary transition-colors text-left"
+              >
                 Sensitivity Calculator
-              </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">
+              </button>
+              <button 
+                onClick={() => handleToolClick('Headshot Trainer')}
+                className="block text-muted-foreground hover:text-primary transition-colors text-left"
+              >
                 Headshot Trainer
-              </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">
+              </button>
+              <button 
+                onClick={() => handleToolClick('Rank Calculator')}
+                className="block text-muted-foreground hover:text-primary transition-colors text-left"
+              >
                 Rank Calculator
-              </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">
+              </button>
+              <button 
+                onClick={() => handleToolClick('Squad Analyzer')}
+                className="block text-muted-foreground hover:text-primary transition-colors text-left"
+              >
                 Squad Analyzer
-              </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">
+              </button>
+              <button 
+                onClick={() => handleToolClick('Weapon Stats')}
+                className="block text-muted-foreground hover:text-primary transition-colors text-left"
+              >
                 Weapon Stats
-              </a>
+              </button>
             </div>
           </div>
           
@@ -71,21 +134,36 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Resources</h3>
             <div className="space-y-2 text-sm">
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">
+              <button 
+                onClick={() => console.log('Opening Gaming Guides')}
+                className="block text-muted-foreground hover:text-primary transition-colors text-left"
+              >
                 Gaming Guides
-              </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">
+              </button>
+              <button 
+                onClick={() => console.log('Opening Pro Player Tips')}
+                className="block text-muted-foreground hover:text-primary transition-colors text-left"
+              >
                 Pro Player Tips
-              </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">
+              </button>
+              <button 
+                onClick={() => console.log('Opening Game Updates')}
+                className="block text-muted-foreground hover:text-primary transition-colors text-left"
+              >
                 Game Updates
-              </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">
+              </button>
+              <button 
+                onClick={() => console.log('Opening Community')}
+                className="block text-muted-foreground hover:text-primary transition-colors text-left"
+              >
                 Community
-              </a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">
+              </button>
+              <button 
+                onClick={() => console.log('Opening Support')}
+                className="block text-muted-foreground hover:text-primary transition-colors text-left"
+              >
                 Support
-              </a>
+              </button>
             </div>
           </div>
           
@@ -93,11 +171,17 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Contact</h3>
             <div className="space-y-3">
-              <div className="flex items-center space-x-2 text-sm">
+              <button 
+                onClick={handleEmailClick}
+                className="flex items-center space-x-2 text-sm hover:text-primary transition-colors"
+              >
                 <Mail className="w-4 h-4 text-primary" />
                 <span className="text-muted-foreground">support@fftoolspro.com</span>
-              </div>
-              <Button className="w-full ff-gradient hover:opacity-90 text-black font-semibold">
+              </button>
+              <Button 
+                className="w-full ff-gradient hover:opacity-90 text-black font-semibold"
+                onClick={handlePremiumClick}
+              >
                 Join Premium
               </Button>
             </div>

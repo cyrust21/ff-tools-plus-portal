@@ -3,6 +3,19 @@ import { Target, Settings, Trophy, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
+  const handleNavClick = (section: string) => {
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handlePremiumClick = () => {
+    console.log('Premium clicked');
+    // Here you can add premium modal or navigation
+    alert('Premium features coming soon!');
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
@@ -20,26 +33,29 @@ const Header = () => {
         </div>
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center space-x-6 text-sm font-medium">
-            <a
+            <button
               className="transition-colors hover:text-primary text-muted-foreground"
-              href="#tools"
+              onClick={() => handleNavClick('tools')}
             >
               Tools
-            </a>
-            <a
+            </button>
+            <button
               className="transition-colors hover:text-primary text-muted-foreground"
-              href="#guides"
+              onClick={() => console.log('Guides clicked')}
             >
               Guides
-            </a>
-            <a
+            </button>
+            <button
               className="transition-colors hover:text-primary text-muted-foreground"
-              href="#updates"
+              onClick={() => console.log('Updates clicked')}
             >
               Updates
-            </a>
+            </button>
           </nav>
-          <Button className="ff-gradient hover:opacity-90 text-black font-semibold">
+          <Button 
+            className="ff-gradient hover:opacity-90 text-black font-semibold"
+            onClick={handlePremiumClick}
+          >
             Premium
           </Button>
         </div>

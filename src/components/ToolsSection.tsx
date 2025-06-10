@@ -93,6 +93,16 @@ const tools = [
 ];
 
 const ToolsSection = () => {
+  const handleToolLaunch = (toolName: string) => {
+    console.log(`Launching ${toolName}...`);
+    alert(`${toolName} akan segera tersedia!`);
+  };
+
+  const handleViewAllTools = () => {
+    console.log('View all tools clicked');
+    alert('Semua tools akan segera tersedia!');
+  };
+
   return (
     <section id="tools" className="py-20 px-4">
       <div className="container">
@@ -151,6 +161,7 @@ const ToolsSection = () => {
                     <Button 
                       className="w-full group-hover:ff-gradient group-hover:text-black transition-all duration-300"
                       variant="outline"
+                      onClick={() => handleToolLaunch(tool.title)}
                     >
                       <Zap className="w-4 h-4 mr-2" />
                       Launch Tool
@@ -166,6 +177,7 @@ const ToolsSection = () => {
           <Button 
             size="lg" 
             className="ff-gradient hover:opacity-90 text-black font-semibold"
+            onClick={handleViewAllTools}
           >
             Lihat Semua Tools
           </Button>
